@@ -15,6 +15,32 @@ export const PAGES_MENU = [
         }
       },
       {
+        path: 'users',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'Users', // menu title
+            icon: 'ion-android-person', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 1
+          }
+        }
+      },
+      {
+        path: 'about',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'About', // menu title
+            icon: 'ion-android-bulb', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 2
+          }
+        }
+      },
+      {
         path: 'editors',
         data: {
           menu: {
