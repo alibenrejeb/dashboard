@@ -20,7 +20,7 @@ export class AuthService {
         body.set('username', username);
         body.set('password', password);
 
-        return this.http.post('http://post-api.dev:8000/api/login_check', body ,{headers : headers})
+        return this.http.post('http://rest-api.dev:8000/s-api/login_check', body ,{headers : headers})
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 const token = response.json() && response.json().token;

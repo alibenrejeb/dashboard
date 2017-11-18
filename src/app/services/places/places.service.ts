@@ -10,7 +10,7 @@ import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class PlacesService {
-    private uri = 'http://post-api.dev:8000/api/places';
+    private uri = 'http://rest-api.dev:8000/s-api/places';
 
     constructor(    private http: Http,
                     private authenticationService: AuthService
