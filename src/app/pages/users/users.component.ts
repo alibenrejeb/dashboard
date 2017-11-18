@@ -13,6 +13,8 @@ export class UsersComponent implements OnInit {
     user: User;
     hobbies: string[];
     isEdit: boolean = false;
+    places:Place[];
+    supuser: Super;
 
     constructor(private usersApiService: UsersApiService) {
         console.log('constructor UsersComponent is running ...');
@@ -36,6 +38,15 @@ export class UsersComponent implements OnInit {
   onClick() {
     this.user.name = 'Brad Traversy';
     this.hobbies.push('New Hobby');
+    /*this.usersApiService.getUser().subscribe(successCode => {
+        console.log(successCode);
+        this.user.name = successCode.firstname;
+    });*/
+    
+    /*this.usersApiService.getPlaces().subscribe((places) => {
+            console.log(places);
+            this.places = places;
+    });*/
   }
 
   addHobby(hobby) {
@@ -51,4 +62,17 @@ export class UsersComponent implements OnInit {
   toggleEdit() {
     this.isEdit = !this.isEdit;
   }
+}
+
+interface Place {
+  id: number,
+  name: string,
+  address: number
+}
+
+interface Super {
+    id: number,
+    firstname: string,
+    lastname: string,
+    email: string
 }

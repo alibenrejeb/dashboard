@@ -20,13 +20,14 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-      { path: 'editors', loadChildren: './editors/editors.module#EditorsModule' },
-      { path: 'components', loadChildren: './components/components.module#ComponentsModule' },
-      { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
-      { path: 'ui', loadChildren: './ui/ui.module#UiModule' },
-      { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
-      { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
-      { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
+      //{ path: 'editors', loadChildren: './editors/editors.module#EditorsModule' },
+      //{ path: 'components', loadChildren: './components/components.module#ComponentsModule' },
+      //{ path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
+      //{ path: 'ui', loadChildren: './ui/ui.module#UiModule' },
+      //{ path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
+      //{ path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
+      //{ path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
+      { path: 'places', loadChildren: './places/places.module#PlacesModule'},
       { path: 'users', loadChildren: './users/users.module#UsersModule'},
       { path: 'about',  loadChildren: './about/about.module#AboutModule' }
     ]
