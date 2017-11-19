@@ -11,12 +11,14 @@ export class PlacesComponent implements OnInit {
 
   places: Array<Place> = [];
   errorMessage: string;
+  res: any[];
 
   constructor(private placesService: PlacesService) { }
 
   getPlaces() {
     this.placesService.getPlaces().subscribe(
-      places => this.places = places, error => this.errorMessage = <any> error
+      places => this.places = places,
+      error => this.errorMessage = <any> error
     );
   }
 
