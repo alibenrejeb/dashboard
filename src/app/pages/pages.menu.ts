@@ -14,6 +14,32 @@ export const PAGES_MENU = [
           }
         }
       },
+      {
+        path: 'teams',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'Teams Page', // menu title
+            icon: 'ion-android-home', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'new',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: 'New Page', // menu title
+            icon: 'ion-android-home', // menu icon
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
       /*{
         path: ['/login'],  // path for our page
         data: { // custom menu declaration
@@ -65,6 +91,52 @@ export const PAGES_MENU = [
             order: 4
           }
         }
+      },
+      {
+        path: 'tables',
+        data: {
+          menu: {
+            title: 'general.menu.tables',
+            icon: 'ion-grid',
+            selected: false,
+            expanded: false,
+            order: 500,
+          }
+        },
+        children: [
+          {
+            path: 'basictables',
+            data: {
+              menu: {
+                title: 'general.menu.basic_tables',
+              }
+            }
+          },
+          {
+            path: 'smarttables',
+            data: {
+              menu: {
+                title: 'general.menu.smart_tables',
+              }
+            }
+          },
+          {
+            path: 'datatables',
+            data: {
+              menu: {
+                title: 'Data Tables',
+              }
+            }
+          },
+           {
+             path: 'hottables',
+             data: {
+               menu: {
+                 title: 'Hot Tables',
+               }
+             }
+           }
+        ]
       },
     ]
   }

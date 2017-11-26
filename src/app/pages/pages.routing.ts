@@ -25,11 +25,13 @@ export const routes: Routes = [
       //{ path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
       //{ path: 'ui', loadChildren: './ui/ui.module#UiModule' },
       //{ path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
-      //{ path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
+      { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
       //{ path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
       { path: 'places', loadChildren: './places/places.module#PlacesModule'},
       { path: 'users', loadChildren: './users/users.module#UsersModule'},
-      { path: 'about',  loadChildren: './about/about.module#AboutModule' }
+      { path: 'about',  loadChildren: './about/about.module#AboutModule' },
+      { path: 'new',  loadChildren: './new/new.module#NewModule' },
+      { path: 'teams',  loadChildren: './teams/teams.module#TeamsModule' }
     ]
   }
 ];
