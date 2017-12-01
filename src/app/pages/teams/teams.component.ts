@@ -12,11 +12,15 @@ import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 export class TeamsComponent implements OnInit {
 
   teams: Array<Team> = [];
+  selectDivisionList = [];
   team: Team;
   errorMessage: string;
   statusCode: string;
 
-  settings = {
+  settings = {};
+
+  customSettings = {
+    noDataMessage: 'Loading...',
     add: {
       addButtonContent: '<i class="ion-ios-plus-outline"></i>',
       createButtonContent: '<i class="ion-checkmark"></i>',
@@ -36,15 +40,42 @@ export class TeamsComponent implements OnInit {
     columns: {
       name: {
         title: 'Name',
-        type: 'string'
+        type: 'string',
+        filter: false
       },
       code: {
         title: 'Code',
-        type: 'string'
+        type: 'string',
+        filter: false
       },
       short_name: {
         title: 'Short name',
-        type: 'string'
+        type: 'string',
+        filter: false
+      },
+      color_home: {
+        title: 'Color home',
+        type: 'string',
+        filter: false
+      },
+      color_away: {
+        title: 'Color away',
+        type: 'string',
+        filter: false
+      },
+      division:{
+        title: 'Division',
+        type: 'html',
+        filter: false,
+        valuePrepareFunction: (division) => {
+          return division.name;
+        },
+        editor: {
+          type: 'list',
+          config: {
+            list: []
+          },
+        }
       },
     },
   };
@@ -52,10 +83,38 @@ export class TeamsComponent implements OnInit {
   mySource: LocalDataSource = new LocalDataSource();
 
   constructor(private teamsService: TeamsService) {
+    this.teamsService.getAllDivision().subscribe(data => {
+      data.forEach(division =>{
+          this.selectDivisionList.push({value: division.id, title: division.name});
+      });
+
+      this.customSettings.columns.division.editor.config.list = this.selectDivisionList;
+      this.settings = Object.assign({}, this.customSettings);
+      console.log(this.settings);
+    });
+
     this.teamsService.getTeams().subscribe((data) => {
       this.mySource.load(data);
       console.log(this.mySource);
     });
+  }
+
+  onSearch(query: string = '') {
+    this.mySource.setFilter([
+      // fields we want to include in the search
+      {
+        field: 'Name',
+        search: query
+      },
+      {
+        field: 'code',
+        search: query
+      },
+      {
+        field: 'short_name',
+        search: query
+      }
+    ], false);
   }
 
   getTeams() {
@@ -100,13 +159,14 @@ export class TeamsComponent implements OnInit {
 
   onSaveConfirm(event):void {
     console.log('onSaveConfirm');
-    //console.log(event);
+    console.log(event);
     if (window.confirm('Are you sure you want to save?')) {
       this.team = event.newData;
       this.teamsService.updateTeam(this.team).subscribe(
         statusCode => console.log(statusCode + " OK"),
         errorCode => this.statusCode = errorCode
       );
+      this.mySource.refresh();
       event.confirm.resolve(event.newData);
     } else {
       event.confirm.reject();

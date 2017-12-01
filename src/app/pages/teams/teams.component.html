@@ -1,6 +1,9 @@
 <div class="widgets">
 
     <div class="row">
+        <input #search class="search" type="text" placeholder="Search..." (keydown.enter)="onSearch(search.value)">
+    </div>
+    <div class="row">
         <!--<ba-card cardTitle="Basic Example" baCardClass="with-scroll" class="smart-table-container">-->
         <ng2-smart-table [settings]="settings" [source]="mySource" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"></ng2-smart-table>
         <!--</ba-card>-->

@@ -40,7 +40,7 @@ export class Login implements OnInit {
       this.authenticationService.login(values['username'], values['password'])
         .subscribe(result => {
           console.log(result);
-          this.router.navigate(['/pages/places']);
+          this.router.navigate(['/pages/teams']);
         }, loginError => this.error = loginError.message + ' : verify  your username or password !  ');
       console.log(values);
       console.log(this.username);
